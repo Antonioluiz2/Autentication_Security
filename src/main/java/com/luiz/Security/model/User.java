@@ -2,7 +2,7 @@ package com.luiz.Security.model;
 
 import java.util.Collection;
 
-//import javax.management.relation.Role;
+import javax.management.relation.Role;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;

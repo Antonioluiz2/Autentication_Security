@@ -1,6 +1,7 @@
 package com.luiz.Security.model;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.management.relation.Role;
 import javax.persistence.Column;
@@ -101,6 +102,11 @@ public class User {
 	}
 	public void setRoles(Collection<Role> roles) {
 		this.roles = roles;
+	}
+
+	public void setRoles(List<com.luiz.Security.model.Role> asList) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

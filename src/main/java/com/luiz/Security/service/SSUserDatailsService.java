@@ -1,18 +1,21 @@
 package com.luiz.Security.service;
 
 import java.util.HashSet;
+//import java.util.HashSet;
 import java.util.Set;
 
 import javax.transaction.Transactional;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+//import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.luiz.Security.model.Role;
+//import com.luiz.Security.model.Role;
 import com.luiz.Security.model.User;
 import com.luiz.Security.repository.UserRepository;
 
@@ -32,19 +35,19 @@ public class SSUserDatailsService implements UserDetailsService{
 			if(user==null) {
 				return null;
 			}
-			return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getAuthorities(user));
+			return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getAuthories(user));
 		}
 		catch(Exception e) {
 			throw new UsernameNotFoundException("User Não encontrado");
 		}
 	}
 	//Retirar toda autoridade dos usuários
-	private Set<GrantedAuthority> getAuthorities(User user){
+	private Set<GrantedAuthority> getAuthories(User user){
 		Set<GrantedAuthority>authorities=new HashSet<>();
-		for(Role role: user.getRoles()) {
+		for(Role role: user.getRoles()){
 			GrantedAuthority grantedAuthority= new SimpleGrantedAuthority(role.getRole());
 			authorities.add(grantedAuthority);
-			
+//			
 		}
 		return authorities;
 	}

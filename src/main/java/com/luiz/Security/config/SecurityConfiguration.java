@@ -27,7 +27,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		@Autowired
 		private UserRepository userRepository;
 		@Autowired
-		private UserDetailsService UserDetailsServiceBean() throws Exception{
+		public UserDetailsService UserDetailsServiceBean() throws Exception{
 			return new SSUserDatailsService(userRepository);
 		}
 		
@@ -51,15 +51,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 //			.and()
 //			.withUser("user")
 //			.password(passwordEncoder().encode("password")).authorities("USER");
-			auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder());
+			auth.userDetailsService(userDetailsServiceBean()).passwordEncoder(passwordEncoder());
 		}
 
-		public SSUserDatailsService getUserDetailsService() {
-			return userDetailsService;
-		}
-
-		public void setUserDetailsService(SSUserDatailsService userDetailsService) {
-			this.userDetailsService = userDetailsService;
-		}
+//		public SSUserDatailsService getUserDetailsService() {
+//			return userDetailsService;
+//		}
+//
+//		public void setUserDetailsService(SSUserDatailsService userDetailsService) {
+//			this.userDetailsService = userDetailsService;
+//		}
 		
 }
